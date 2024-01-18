@@ -1,6 +1,6 @@
 import React from "react";
-import ProductCard from "./productcard.components";
-import { ProductItem } from "./productitem.components";
+import ProductItem from "./productitem.components";
+import PropTypes from 'prop-types'
 
 export const ProductList = ({products}) => (
     <ul>
@@ -14,3 +14,7 @@ export const ProductList = ({products}) => (
         }
     </ul>
 );
+
+ProductList.propTypes = {
+    products: PropTypes.array.isRequired
+}

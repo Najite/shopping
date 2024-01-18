@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent, Typography, CardMedia } from "@mui/material";
+import PropTypes from 'prop-types';
 
 const ProductCard = ({name, price, image}) =>  {
     return(
@@ -21,5 +22,11 @@ const ProductCard = ({name, price, image}) =>  {
         </Card>
     );
 };
+
+ProductCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    image: PropTypes.string,
+}
 
 export default ProductCard;
