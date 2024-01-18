@@ -1,6 +1,9 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
+
 import ProductItem from "./productitem.components";
-import PropTypes from 'prop-types'
+
 
 export const ProductList = ({products}) => (
     <ul>
