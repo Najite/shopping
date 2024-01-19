@@ -12,6 +12,17 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import useAPi from "../hooks/fetch-api";
 
 
+
+const slickContainer = {
+        width: '80%',
+        margin: 'auto'
+    }
+
+// const slickSlide = {
+//         display: 'flex',
+//         justifyContent: 'center'
+//     }
+
 const SliderComponent = () => {
     const url = 'https://nahjyte.pythonanywhere.com/api/product';
     const {data, loading, error} = useAPi(url)
@@ -32,15 +43,25 @@ const SliderComponent = () => {
     }
 
     return (
-        <Slider {...sliderSetting}>
+        <Slider {...sliderSetting} style={slickContainer}>
             {data.map((slide, index) => (
-                <Card key={index}>
+                <Card key={index} >
                     <CardMedia 
                     component="img"
-                    height="140"
+                    height="auto"
                     image={slide.image}
                     alt={slide.name}
-                    />
+                    style={{
+                        maxWidth: '100%',
+                        width: '40%',
+                        objectFit: 'cover',
+                        height: 'auto',
+                        // display: 'flex',
+                        // alignItems: 'center',
+                        margin: 'auto'
+                        
+                    }}
+                    /> 
                 </Card>
             ))}
         </Slider>

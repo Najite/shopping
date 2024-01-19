@@ -10,6 +10,7 @@ const ProductCard = ({name, price, image}) =>  {
             alt={name}
             height="130"
             image={image}
+            
         />
         <CardContent>
             <Typography variant="h5" component="div">
