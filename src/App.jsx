@@ -6,11 +6,7 @@ function App() {
 
   return (
     <>
-    <Container maxWidth="fluid" 
-    style={{
-      backgroundColor: 'red'
-    }}
-    >
+    <Container maxWidth="fluid">
       <HomePage />
       </Container>
     </>

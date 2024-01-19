@@ -9,7 +9,6 @@ const ProductOverview = () => {
     const url = 'https://nahjyte.pythonanywhere.com/api/product';
 
     const {data, loading, error} = useAPi(url);
-    console.log(data);
     if (loading) {
         return <p>Loading</p> 
     }

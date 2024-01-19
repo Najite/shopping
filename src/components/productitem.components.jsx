@@ -1,16 +1,27 @@
 import React from "react";
-import ProductCard from "./productcard.components";
 import PropTypes from 'prop-types';
+import {styled} from "@mui/system";
+
+
+import ProductCard from "./productcard.components";
+
+
+const CardContainer = styled('div')({
+    border: '1px solid #ccc',
+    borderRadius: '8ox',
+    padding: '16px',
+    textAlign: 'center'
+})
 
 const ProductItem = ({product}) => {
     const {id, name, price, image} = product;
     return (
-        <div key={id}>
+        <CardContainer key={id}>
             <ProductCard
             name={name}
             price={price}
             image={image} />
-        </div>
+        </CardContainer>
     );
 };
 
