@@ -61,8 +61,8 @@ const SliderComponent = () => {
                 <Card key={index} sx={{
                     maxWidth: '100%',
                     height: 'auto',
-                    display: 'flex',
-                    flexDirection: 'column'
+                    // display: 'flex',
+                    // flexDirection: 'column'
                     }} >
                     <CardMedia 
                     component="img"

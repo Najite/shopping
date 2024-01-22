@@ -9,8 +9,7 @@ const BannerContainer = () => {
     return (
         <Container maxWidth sx={{
             height: 'auto',
-            overflow: 'hidden',
-            padding: 0
+            padding: 0,
 
         }}>
         <SliderComponent />
