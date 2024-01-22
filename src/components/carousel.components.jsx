@@ -23,10 +23,9 @@ const customArrowStyle = {
 
 
 const slickContainer = {
-        width: '80%',
-        height: '100vh',
-        overflow: 'hidden',
-        margin: 'auto'
+        width: '100%',
+        height: 'auto',
+        // margin: 'auto'
     }
 
 // const slickSlide = {
@@ -57,22 +56,25 @@ const SliderComponent = () => {
     } 
 
     return (
-        <Slider {...sliderSetting} style={slickContainer}>
+        <Slider {...sliderSetting} sx={slickContainer}>
             {data.map((slide, index) => (
-                <Card key={index} style={{
-                    width: '100%'
-                }} >
+                <Card key={index} sx={{
+                    maxWidth: '100%',
+                    height: 'auto',
+                    display: 'flex',
+                    flexDirection: 'column'
+                    }} >
                     <CardMedia 
                     component="img"
-                    height="auto"
+                    // height="auto"
                     image={slide.image}
                     alt={slide.name}
-                    style={{
-                        maxWidth: '100%',
-                        width: '40%',
+                    sx={{
+                        width: '100%',
+                        flex: 1,
                         objectFit: 'cover',
+                        objectPosition: 'center',
                         margin: 'auto',
-                        height: 'auto',               
                     }}
                     /> 
                 </Card>
