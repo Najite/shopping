@@ -61,24 +61,29 @@ const SliderComponent = () => {
                 <Card key={index} sx={{
                     maxWidth: '100%',
                     height: 'auto',
-                    // display: 'flex',
-                    // flexDirection: 'column'
+                    display: 'flex',
+                    flexDirection: 'column'
                     }} >
                     <CardMedia 
                     component="img"
-                    // height="auto"
+                    width='100%'
                     image={slide.image}
                     alt={slide.name}
                     sx={{
                         width: '100%',
-                        flex: 1,
+                        height: {
+                            xs: '70vh',
+                            sm: '100vh',
+                            md: '60vh',
+                            lg: '110vh',
+                            xl: '120vh'
+
+                        },
                         objectFit: 'cover',
-                        objectPosition: 'center',
-                        margin: 'auto',
                     }}
                     /> 
                 </Card>
-            ))}
+            ))} 
         </Slider>
     );
 };

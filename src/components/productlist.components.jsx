@@ -11,7 +11,7 @@ export const ProductList = ({products}) => (
     <Grid container spacing={2}>
         {
             products.map(product => (
-                <Grid item xs={12} sm={6} md={4} key={product.id}>
+                <Grid item xs={12} sm={1} md={3} key={product.id}>
                     <ProductItem 
                     key={product.id}
                     product={product}
