@@ -4,6 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import {PrevArrow, NextArrow} from 'react-slick';
 
 // Material UI
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
@@ -12,9 +13,19 @@ import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 import useAPi from "../hooks/fetch-api";
 
 
+const customArrowStyle = {
+    color: 'black',
+    fontSize: '24px',
+    backgroundColor: 'red',
+    borderRadius: '50%',
+    padding: '10px'
+}
+
 
 const slickContainer = {
         width: '80%',
+        height: '100vh',
+        overflow: 'hidden',
         margin: 'auto'
     }
 
@@ -39,13 +50,18 @@ const SliderComponent = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
-    }
+        slidesToScroll: 1,
+        // prevArrow: <PrevArrow  />,
+        // nextArrow: <NextArrow />
+
+    } 
 
     return (
         <Slider {...sliderSetting} style={slickContainer}>
             {data.map((slide, index) => (
-                <Card key={index} >
+                <Card key={index} style={{
+                    width: '100%'
+                }} >
                     <CardMedia 
                     component="img"
                     height="auto"
@@ -55,11 +71,8 @@ const SliderComponent = () => {
                         maxWidth: '100%',
                         width: '40%',
                         objectFit: 'cover',
-                        height: 'auto',
-                        // display: 'flex',
-                        // alignItems: 'center',
-                        margin: 'auto'
-                        
+                        margin: 'auto',
+                        height: 'auto',               
                     }}
                     /> 
                 </Card>
