@@ -66,7 +66,6 @@ const SliderComponent = () => {
                     }} >
                     <CardMedia 
                     component="img"
-                    width='100%'
                     image={slide.image}
                     alt={slide.name}
                     sx={{
