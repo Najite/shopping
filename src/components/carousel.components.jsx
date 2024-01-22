@@ -74,11 +74,11 @@ const SliderComponent = () => {
                             xs: '70vh',
                             sm: '100vh',
                             md: '60vh',
-                            lg: '110vh',
+                            lg: '90vh',
                             xl: '120vh'
 
                         },
-                        objectFit: 'cover',
+                        objectFit: 'contain',
                     }}
                     /> 
                 </Card>

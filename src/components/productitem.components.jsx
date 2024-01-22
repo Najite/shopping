@@ -16,7 +16,7 @@ const CardContainer = styled('div')({
 const ProductItem = ({product}) => {
     const {id, name, price, image} = product;
     return (
-        <CardContainer key={id} >
+        <CardContainer key={id}  >
             <ProductCard
             name={name}
             price={price}

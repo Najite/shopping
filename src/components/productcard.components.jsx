@@ -8,8 +8,12 @@ const ProductCard = ({name, price, image}) =>  {
             <CardMedia
             component="img"
             alt={name}
-            height="13"
             image={image}
+            style={{
+                height: '30vh',
+                objectFit: 'contain'
+            }}
+            
             
         />
         <CardContent>
