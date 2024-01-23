@@ -1,4 +1,4 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 
 // Slider carousel settings
 import Slider from "react-slick";
@@ -10,9 +10,10 @@ import {PrevArrow, NextArrow} from 'react-slick';
 import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 
-import useAPi from "../hooks/fetch-api";
+// local import
+import useAPi from "../hooks/fetch-api"; 
 
-
+// const useApi = lazy(() => import("../hooks/fetch-api"));
 const customArrowStyle = {
     color: 'black',
     fontSize: '24px',
@@ -53,7 +54,7 @@ const SliderComponent = () => {
         // prevArrow: <PrevArrow  />,
         // nextArrow: <NextArrow />
 
-    } 
+    }  
 
     return (
         <Slider {...sliderSetting} sx={slickContainer}>

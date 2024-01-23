@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useQuery } from "react-query";
+
 
 
 import useAPi from "../hooks/fetch-api";
@@ -8,8 +10,8 @@ import { ProductList } from "./productlist.components";
 const ProductOverview = () => {
     const url = 'https://nahjyte.pythonanywhere.com/api/product';
 
-    const {data, loading, error} = useAPi(url);
-    if (loading) {
+    const {data, isLoading, error} = useAPi(url);
+    if (isLoading) {
         return <p>Loading</p> 
     }
     if (error) {

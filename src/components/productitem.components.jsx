@@ -1,9 +1,15 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import PropTypes from 'prop-types';
+
 import {styled} from "@mui/system";
+import { CircularProgress } from "@mui/material";
 
 
-import ProductCard from "./productcard.components";
+
+// import ProductCard from "./productcard.components";
+
+const LazyProductCard = lazy(() => import("./productcard.components"));
+
 
 
 const CardContainer = styled('div')({
@@ -17,10 +23,13 @@ const ProductItem = ({product}) => {
     const {id, name, price, image} = product;
     return (
         <CardContainer key={id}  >
-            <ProductCard
-            name={name}
-            price={price}
-            image={image} />
+            <Suspense fallback={<CircularProgress />}>
+                <LazyProductCard
+                     name={name}
+                     price={price}
+                    image={image} 
+                />
+            </Suspense>
         </CardContainer>
     );
 };
