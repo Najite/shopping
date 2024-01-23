@@ -45,7 +45,7 @@ const SliderComponent = () => {
 
     return (
         <Slider {...sliderSetting} sx={slickContainer}>
-            {data.map((slide, index) => (
+            {data.slice(0,3).map((slide, index) => (
                 <Card key={index} sx={{
                     maxWidth: '100%',
                     height: 'auto',
