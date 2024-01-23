@@ -1,7 +1,6 @@
 import React from "react";
 
-import { useQuery } from "react-query";
-
+import { Container } from "@mui/material";
 
 
 import useAPi from "../hooks/fetch-api";
@@ -18,10 +17,9 @@ const ProductOverview = () => {
         return <p>Error: {error.message} </p>
     }
     return (
-    <div>
-        <h1>home page</h1>
+    <Container maxWidth style={{marginTop: '10rem'}}>
         { data && <ProductList products={data} />}
-        </div>
+        </Container>
     );
 };
 
