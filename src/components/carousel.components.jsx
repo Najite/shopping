@@ -1,38 +1,25 @@
 import React, {lazy, Suspense} from "react";
+import PropTypes from "prop-types";
 
 // Slider carousel settings
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import {PrevArrow, NextArrow} from 'react-slick';
-
+ 
 // Material UI
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardMedia } from "@mui/material";
 
 
 // local import
 import useAPi from "../hooks/fetch-api"; 
-
-// const useApi = lazy(() => import("../hooks/fetch-api"));
-const customArrowStyle = {
-    color: 'black',
-    fontSize: '24px',
-    backgroundColor: 'red',
-    borderRadius: '50%',
-    padding: '10px'
-}
+import { PrevArrow, NextArrow } from "./custom-arrow";
 
 
 const slickContainer = {
         width: '100%',
         height: 'auto',
-        // margin: 'auto'
     }
 
-// const slickSlide = {
-//         display: 'flex',
-//         justifyContent: 'center'
-//     }
 
 const SliderComponent = () => {
     const url = 'https://nahjyte.pythonanywhere.com/api/product';
@@ -51,8 +38,8 @@ const SliderComponent = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        // prevArrow: <PrevArrow  />,
-        // nextArrow: <NextArrow />
+        prevArrow: <PrevArrow />,
+        nextArrow: <NextArrow />
 
     }  
 
@@ -89,3 +76,9 @@ const SliderComponent = () => {
 };
 
 export default SliderComponent;
+
+
+
+
+
+

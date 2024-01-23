@@ -18,7 +18,7 @@ const ProductOverview = () => {
         return <p>Error: {error.message} </p>
     }
     return (
-    <div className="collection-overview">
+    <div>
         <h1>home page</h1>
         { data && <ProductList products={data} />}
         </div>
