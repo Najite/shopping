@@ -5,6 +5,9 @@ import {styled} from "@mui/system";
 import { CircularProgress } from "@mui/material";
 
 
+import { Link } from "react-router-dom";
+
+
 
 // import ProductCard from "./productcard.components";
 
@@ -21,8 +24,10 @@ const CardContainer = styled('div')({
 
 const ProductItem = ({product}) => {
     const {id, name, price, image} = product;
+    // console.log(id)
     return (
         <CardContainer key={id}  >
+            <Link to={`/product/${id}`}>
             <Suspense fallback={<CircularProgress />}>
                 <LazyProductCard
                      name={name}
@@ -30,6 +35,7 @@ const ProductItem = ({product}) => {
                     image={image} 
                 />
             </Suspense>
+            </Link>
         </CardContainer>
     );
 };

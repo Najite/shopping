@@ -17,7 +17,7 @@ const ProductOverview = () => {
         return <p>Error: {error.message} </p>
     }
     return (
-    <Container maxWidth='xl' style={{marginTop: '10rem'}}>
+    <Container maxWidth="xl" style={{marginTop: '10rem'}}>
         { data && <ProductList products={data} />}
         </Container>
     );

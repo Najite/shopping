@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css'
 import { Container } from '@mui/material'
 import HomePage from './pages/homepage'
+import { ProductDetailPage } from './pages/detailpage';
 
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ function App() {
       <Container maxWidth="xl">
          <Routes>
             <Route path='/' element={ <HomePage /> } />
+            <Route path='/product/:id' element={ <ProductDetailPage />} />
          </Routes>
       </Container>
     </QueryClientProvider>
