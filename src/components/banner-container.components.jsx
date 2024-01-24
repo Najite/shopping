@@ -7,7 +7,7 @@ import SliderComponent from "./carousel.components";
 
 const BannerContainer = () => {
     return (
-        <Container maxWidth='fluid' sx={{
+        <Container maxWidth="xl" sx={{
             height: 'auto',
             // overflow: 'hidden',
             padding: 0,
@@ -15,7 +15,7 @@ const BannerContainer = () => {
         }}>
         <SliderComponent />
         </Container>
-    )
+    ) 
 }
 
 export default BannerContainer; 
