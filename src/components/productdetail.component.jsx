@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+
 import { 
     Container,
     CircularProgress,
     Typography, 
-    Grid
+    Grid,
+    Button
  } from "@mui/material";
 
 
  import useAPi from "../hooks/fetch-api";
+ import useCartStore from "../store/cartstore";
 
 
 
@@ -19,7 +22,15 @@ const ProductDetail = () => {
     const [detail, setDetail] = useState(null);
     const url = `https://nahjyte.pythonanywhere.com/api/product/${id}`
     const {data, isLoading, error} = useAPi(url);
+    const cartstore = useCartStore();
 
+    const handleAddToCart = () => {
+        if (detail) {
+            cartstore.addToCart(detail);
+            console.log('added to cart')
+
+        }
+    }
     useEffect(() => {
         if (data && data !== null) {
             setDetail(data);
@@ -53,6 +64,7 @@ const ProductDetail = () => {
                     <Typography variant="body1">
                         {detail.price}
                     </Typography>
+                    <Button variant="contained" color="primary" onClick={handleAddToCart}>Add to cart</Button>
                 </Grid>
                 
             </Grid>

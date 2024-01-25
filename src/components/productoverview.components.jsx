@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Container } from "@mui/material";
+import { Container, CircularProgress } from "@mui/material";
 
 
 import useAPi from "../hooks/fetch-api";
@@ -11,7 +11,9 @@ const ProductOverview = () => {
 
     const {data, isLoading, error} = useAPi(url);
     if (isLoading) {
-        return <p>Loading</p> 
+        return (
+        <p>h</p>
+        ) 
     }
     if (error) {
         return <p>Error: {error.message} </p>

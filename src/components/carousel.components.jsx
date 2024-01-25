@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
  
 // Material UI
-import { Card, CardMedia } from "@mui/material";
+import { Card, CardMedia, CircularProgress } from "@mui/material";
 
 
 // local import
@@ -25,7 +25,7 @@ const SliderComponent = () => {
     const url = 'https://nahjyte.pythonanywhere.com/api/product';
     const {data, loading, error} = useAPi(url)
     if (loading) {
-        return <p>Loading</p>
+        return <CircularProgress />
     }
     
     if (error) {
