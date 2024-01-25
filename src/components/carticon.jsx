@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Badge, Popover, Typography, Box } from "@mui/material";
+import { Badge, Popover, 
+    Typography, Box, IconButton
+
+} from "@mui/material";
+
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 import useCartStore from "../store/cartstore";
@@ -10,6 +15,7 @@ const CartIcon = () => {
     const cartItems = useCartStore((state) => state.cart);
     const total = useCartStore((state) => state.total)
     const [anchor, setAnchor] = useState(null);
+    const removeFromCart = useCartStore((state) => state.removeFromCart)
 
     const handleClick = (event) => {
         setAnchor(event.currentTarget);
@@ -48,6 +54,13 @@ const CartIcon = () => {
                         <Typography>
                             Total Price: {item.price * item.quantity} 
                         </Typography>
+                        <IconButton 
+                            color="secondary"
+                            onClick={() => removeFromCart(item.id)}
+                            >
+                                <DeleteIcon />
+
+                            </IconButton>
                         <hr />
                     </div>
                 ))}
