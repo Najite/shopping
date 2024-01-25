@@ -55,7 +55,11 @@ const ProductDetail = () => {
         {detail && (
             <Grid container spacing={2}>
                 <Grid item xs={12} md={6}>
-                    <img src={detail.image} alt={detail.name} style={{ width: '100%'}} />
+                    <img src={detail.image}
+                     alt={detail.name} 
+                     style={{ width: '100%'}} 
+                     loading="lazy"
+                     />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Typography variant="h5" gutterBottom>
