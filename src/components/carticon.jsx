@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Badge, Popover, 
-    Typography, Box, IconButton
+    Typography, Box, IconButton, Button
 
 } from "@mui/material";
 
@@ -68,6 +70,12 @@ const CartIcon = () => {
                 cartItems.length === 0 && <Typography>Empty Cart </Typography>
                 }
                 <Typography>Total Price: {parseFloat(total).toFixed(2)}</Typography>
+
+                {cartItems.length > 0 && (
+        <Button variant="contained" color="primary" LinkComponent={Link} to="/checkout">
+          Proceed to Checkout
+        </Button>
+      )}
             </Box>
 
         </Popover>

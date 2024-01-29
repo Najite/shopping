@@ -13,6 +13,8 @@ import {
 
  import useAPi from "../hooks/fetch-api";
  import useCartStore from "../store/cartstore";
+import OrderSummary from "./order-summary";
+import Checkout from "./checkout";
 
 
 
@@ -74,6 +76,10 @@ const ProductDetail = () => {
             </Grid>
         )
         }
+
+        {/* <OrderSummary /> */}
+        <Checkout />
+        
         </Container>
     )
 };

@@ -15,7 +15,7 @@ export const ProductList = ({products}) => {
 
     const observer = useRef();
     const lastProductRef = useCallback(node => {
-        if (observer.current) observer.current.disconnet();
+        if (observer.current) observer.current.disconnect();
         observer.current = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting) {
                 setCurrentPage(prevPage => prevPage + 1);
@@ -35,7 +35,7 @@ export const ProductList = ({products}) => {
                 setTimeout(() => {
                     setCurrentPage(prevPage => prevPage + 1);
                     setLoading(false);
-                }, 1000);
+                }, 100);
             }
         };
 
@@ -49,6 +49,7 @@ export const ProductList = ({products}) => {
     <Grid container spacing={2} >
         {
             visibleProducts.map((product, index) => {
+                if (visibleProducts.length === index + 1) {
                     return (
                     <Grid item xs={12} sm={1} md={3} key={product.id} >
                     <ProductItem 
@@ -61,7 +62,6 @@ export const ProductList = ({products}) => {
                             display: 'flex',
                             justifyContent: 'center',
                             marginTop: '10rem',
-                            
                         }}
                         >
                             <CircularProgress />
@@ -69,13 +69,23 @@ export const ProductList = ({products}) => {
                     )}
                     </Grid>
                     );
-                }             
+                } else {
+                    return (
+                        <Grid item xs={12} sm={1} md={3} key={product.id} >
+                    <ProductItem 
+                    key={product.id}
+                    product={product}
+                    />
+                </Grid>
+                    )
+                }
+                
+            }
+
             )
         }
-        <div ref={lastProductRef} style={{
-            height: '1px',
-            visibility: 'hidden'
-        }}></div>
+              <div ref={lastProductRef} style={{ height: '1px', visibility: 'hidden' }} />
+
     </Grid>
     )
 };

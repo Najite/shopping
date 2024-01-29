@@ -1,56 +1,55 @@
-import {create} from 'zustand';
-import zukeeper from 'zukeeper';
+// useCartStore.js
+import { create } from 'zustand';
+import { produce } from 'immer';
 
-const useCartStore = create(zukeeper(set => ({
-    cart: [],
-    total: 0, // Total price for the entire cart
-    addToCart: (product) => {
-        set((state) => {
+const generateUniqueId = () => Math.random().toString(36).substring(7);
+const generateOrderUniqueId = () => 'order_' + generateUniqueId(); // Function to generate a unique order identifier
+
+const useCartStore = create((set) => ({
+  cartId: generateUniqueId(),
+  orderUniqueId: generateOrderUniqueId(), // Add a unique identifier for the order
+  cart: [],
+  total: 0,
+
+  addToCart: (product) => {
+    set(
+      produce((state) => {
         const existingItem = state.cart.findIndex((item) => item.id === product.id);
-        // update the quantity if item exists
-        const updatedCart = existingItem !== -1 ? [...state.cart] : [...state.cart, { ...product, quantity: 0 }];
 
         if (existingItem !== -1) {
-            updatedCart[existingItem].quantity++;
+          state.cart[existingItem].quantity++;
         } else {
-            updatedCart[updatedCart.length -1].quantity++;
+          const newItem = { ...product, quantity: 1 };
+          state.cart.push(newItem);
         }
 
-        const updatedTotal = updatedCart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        state.total = state.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        localStorage.setItem('cart', JSON.stringify(state.cart));
+        localStorage.setItem('total', JSON.stringify(state.total));
+      })
+    );
+  },
 
-        localStorage.setItem('cart', JSON.stringify(updatedCart));
-        localStorage.setItem('total', JSON.stringify(updatedTotal));
-        return {
-            cart: updatedCart,
-            total: updatedTotal
-        };        
-    },)},
-
-    removeFromCart: (productId) => {
-        set((state) => {
-            const updatedCart = state.cart.filter((item) => item.id !== productId);
-
-            const updatedTotal = updatedCart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-            localStorage.setItem('cart', JSON.stringify(updatedCart));
-            localStorage.setItem('total', JSON.stringify(updatedTotal));
-
-            return {
-                cart: updatedCart,
-                total: updatedTotal
-            }
-        })
-    }
-
-}
-)))
+  removeFromCart: (productId) => {
+    set(
+      produce((state) => {
+        state.cart = state.cart.filter((item) => item.id !== productId);
+        state.total = state.cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+        localStorage.setItem('cart', JSON.stringify(state.cart));
+        localStorage.setItem('total', JSON.stringify(state.total));
+      })
+    );
+  },
+}));
 
 const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
-const storedTotal = JSON.parse(localStorage.getItem('cart')) || 0;
+const storedTotal = JSON.parse(localStorage.getItem('total')) || 0;
 
 useCartStore.setState({
-    cart: storedCart,
-    total: storedTotal
+  cart: storedCart,
+  total: storedTotal,
 });
 
-export default useCartStore
+export const useUpdatedCart = () => useCartStore((state) => state);
+
+export default useCartStore;
