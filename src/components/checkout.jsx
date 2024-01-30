@@ -12,11 +12,11 @@ import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
     // const cartItems = useCartStore((state) => state.cart);
-    const {cart, total, removeFromCart, orderUniqueId} = useUpdatedCart(); 
+    const {cart, total, removeFromCart, cartId, orderUniqueId} = useUpdatedCart(); 
     const navigate = useNavigate();
 
     const handleProcessingOrder = () => {
-        navigate(`/order/${orderUniqueId}`)
+        navigate(`/order/${orderUniqueId}}`)
     }
 
     const handleCheckout = () => {
